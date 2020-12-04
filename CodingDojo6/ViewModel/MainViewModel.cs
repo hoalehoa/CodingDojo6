@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,12 +17,16 @@ namespace CodingDojo6.ViewModel
             set { currentVM = value; RaisePropertyChanged(); }
         }
 
-        public RelayCommand OverviewBtn;
-        public RelayCommand MyToysBtn;
+        public RelayCommand OverviewBtn { get; set; }
+        public RelayCommand MyToysBtn { get; set; }
         
         public MainViewModel()
         {
-          
+            
+            OverviewBtn = new RelayCommand(() => {
+                CurrentVM = SimpleIoc.Default.GetInstance<OverviewVM>(); });
+            MyToysBtn = new RelayCommand(() => { CurrentVM = SimpleIoc.Default.GetInstance<MyToysVM>(); });
+
         }
 
     }

@@ -7,6 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" DataContext="{Binding MyToys, Source={StaticResource Locator}}">
     <Grid>
-            
+        <ListBox ItemsSource="{Binding Cart}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+            <DataTemplate>
+                <Image Source="{Binding Image}" Height="90"/>
+            </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>    
     </Grid>
 </UserControl>
