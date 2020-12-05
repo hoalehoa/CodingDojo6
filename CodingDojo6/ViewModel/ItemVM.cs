@@ -21,6 +21,18 @@ namespace CodingDojo6.ViewModel
             AgeRecommendation = rec;
             
         }
+        public int NoOfParts
+        {
+            get
+            {
+                if (Items != null)
+                {
+                    return Items.Count;
+                }
+                else return 0;
+
+            }
+        }
 
         public void AddItem(ItemVM item)
         {

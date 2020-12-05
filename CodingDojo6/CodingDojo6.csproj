@@ -16,10 +16,16 @@
     <None Remove="Images\playmobil3.jpg" />
   </ItemGroup>
 
+
+
+
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="2.0.5" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
   </ItemGroup>
+
+
+
 
   <ItemGroup>
     <Resource Include="Images\lego1.jpg" />
@@ -30,5 +36,8 @@
     <Resource Include="Images\playmobil2.jpg" />
     <Resource Include="Images\playmobil3.jpg" />
   </ItemGroup>
+
+
+
 
 </Project>

@@ -18,6 +18,10 @@ namespace CodingDojo6.ViewModel
 
         public void ChosenItem_ItemAdded(object sender, ItemVM e)
         {
+            if(Cart == null)
+            {
+                Cart = new ObservableCollection<ItemVM>();
+            }
             Cart.Add(e);
         }
     }
