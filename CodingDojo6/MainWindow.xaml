@@ -32,7 +32,7 @@
                     <views:MyToys/>
                 </DataTemplate>
             </ContentControl.Resources>
-            
         </ContentControl>
+        
     </Grid>
 </Window>

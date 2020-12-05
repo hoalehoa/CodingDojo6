@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Overview, Source={StaticResource Locator}}">
+    
     <Grid>
         <Grid.ColumnDefinitions>
-            
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -70,7 +70,7 @@
                 </Button.Template>
             </Button>
             <Border CornerRadius="5" Width="300">
-                <Label Content="New Entry Added" VerticalAlignment="Center"></Label>
+                <Label Content="{Binding Msg}" VerticalAlignment="Center"></Label>
                 
             </Border>
             

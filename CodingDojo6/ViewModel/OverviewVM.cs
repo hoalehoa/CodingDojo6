@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace CodingDojo6.ViewModel
 {
     public class OverviewVM : ViewModelBase
     {
         private ItemVM currentItem;
+        public string Msg { get; set; }
 
         public ItemVM CurrentItem
         {
@@ -28,30 +30,47 @@ namespace CodingDojo6.ViewModel
             set { buyBtn = value; RaisePropertyChanged(nameof(BuyBtn)); }
         }
         public event EventHandler<ItemVM> ItemAdded;
-
+        private DispatcherTimer timer;
 
         public OverviewVM()
         {
             Items = new ObservableCollection<ItemVM>();
             GenerateDemoData();
-            BuyBtn = new RelayCommand<ItemVM>((p) => { ItemAdded?.Invoke(this, p); }, (p) => { return true; });
+            BuyBtn = new RelayCommand<ItemVM>((p) => {
+                ItemAdded?.Invoke(this, p);
+                Msg = "Item added";
+                RaisePropertyChanged(nameof(Msg));
+                timer.Start();
+            }, (p) => { return true; });
+            timer = new DispatcherTimer();
+            
+            timer.Interval = TimeSpan.FromSeconds(2);
+            timer.Tick += Timer_Tick;
+            
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            Msg = "";
+            RaisePropertyChanged(nameof(Msg));
         }
 
         private void GenerateDemoData()
         {
-            try
-            {
-                var lbi1 = new BitmapImage(new Uri("Images/lego1.jpg", UriKind.Relative));
-                var lbi2 = new BitmapImage(new Uri("Images/lego2.jpg", UriKind.Relative));
-                var pbi2 = new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative));
-                var pbi3 = new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative));
+            //try
+            //{
+            //    var lbi1 = new BitmapImage(new Uri("Images/lego1.jpg", UriKind.Relative));
+            //    var lbi2 = new BitmapImage(new Uri("Images/lego2.jpg", UriKind.Relative));
+            //    var pbi2 = new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative));
+            //    var pbi3 = new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative));
                 
-            }
-            catch (Exception e)
-            {
+            //}
+            //catch (Exception e)
+            //{
 
-                throw;
-            }
+            //    throw;
+            //}
             Items.Add(new ItemVM("MY Lego", new BitmapImage(new Uri("Images/lego1.jpg", UriKind.Relative)), "-"));
             Items.Add(new ItemVM("MY Playmobil", new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative)), "-"));
 

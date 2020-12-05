@@ -1,7 +1,8 @@
 {
   "profiles": {
     "CodingDojo6": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "workingDirectory": "C:\\WI\\Semester3\\SWA\\CodingDojo6\\CodingDojo6\\Images\\"
     }
   }
 }

@@ -28,13 +28,27 @@
 
 
   <ItemGroup>
-    <Resource Include="Images\lego1.jpg" />
-    <Resource Include="Images\lego2.jpg" />
-    <Resource Include="Images\lego3.jpg" />
-    <Resource Include="Images\lego4.jpg" />
-    <Resource Include="Images\playmobil1.jpg" />
-    <Resource Include="Images\playmobil2.jpg" />
-    <Resource Include="Images\playmobil3.jpg" />
+    <Resource Include="Images\lego1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\lego2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\lego3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\lego4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\playmobil1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\playmobil2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\playmobil3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 
