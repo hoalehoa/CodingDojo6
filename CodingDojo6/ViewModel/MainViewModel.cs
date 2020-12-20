@@ -26,11 +26,10 @@ namespace CodingDojo6.ViewModel
             CurrentVM = SimpleIoc.Default.GetInstance<MyToysVM>();
             OverviewBtn = new RelayCommand(() =>
             {
-                CurrentVM = SimpleIoc.Default.GetInstance<OverviewVM>(); 
+                CurrentVM = SimpleIoc.Default.GetInstance<OverviewVM>();
                 RaisePropertyChanged();
             });
             MyToysBtn = new RelayCommand(() => { CurrentVM = SimpleIoc.Default.GetInstance<MyToysVM>(); RaisePropertyChanged(); });
-
         }
 
     }

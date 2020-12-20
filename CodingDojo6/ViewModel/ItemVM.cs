@@ -7,36 +7,23 @@ using System.Windows.Media.Imaging;
 
 namespace CodingDojo6.ViewModel
 {
-   public class ItemVM: ViewModelBase
+    public class ItemVM : ViewModelBase
     {
         public string Description { get; set; }
         public BitmapImage Image { get; set; }
         public string AgeRecommendation { get; set; }
         public ObservableCollection<ItemVM> Items { get; set; }
-       
+
         public ItemVM(string des, BitmapImage img, string rec)
         {
             Description = des;
             Image = img;
             AgeRecommendation = rec;
-            
-        }
-        public int NoOfParts
-        {
-            get
-            {
-                if (Items != null)
-                {
-                    return Items.Count;
-                }
-                else return 0;
-
-            }
         }
 
         public void AddItem(ItemVM item)
         {
-            if(Items == null)
+            if (Items == null)
             {
                 Items = new ObservableCollection<ItemVM>();
             }

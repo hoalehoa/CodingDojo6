@@ -13,14 +13,12 @@ namespace CodingDojo6.ViewModel
     {
         private ItemVM currentItem;
         public string Msg { get; set; }
-       // private Messenger messenger = SimpleIoc.Default.GetInstance<Messenger>();
-
+        // private Messenger messenger = SimpleIoc.Default.GetInstance<Messenger>();
         public ItemVM CurrentItem
         {
             get { return currentItem; }
             set { currentItem = value; RaisePropertyChanged(); }
         }
-
         public ObservableCollection<ItemVM> Items { get; set; }
         private RelayCommand<ItemVM> buyBtn;
         public RelayCommand<ItemVM> BuyBtn
@@ -28,7 +26,6 @@ namespace CodingDojo6.ViewModel
             get { return buyBtn; }
             set { buyBtn = value; RaisePropertyChanged(); }
         }
-        //public event EventHandler<ItemVM> ItemAdded;
         private DispatcherTimer timer;
 
         public OverviewVM()
@@ -36,16 +33,17 @@ namespace CodingDojo6.ViewModel
             Items = new ObservableCollection<ItemVM>();
             GenerateDemoData();
             timer = new DispatcherTimer();
-            BuyBtn = new RelayCommand<ItemVM>((p) => {
+            BuyBtn = new RelayCommand<ItemVM>((p) =>
+            {
                 MessengerInstance.Send(p);
                 //ItemAdded?.Invoke(this, p);
                 Msg = "New Entry Added";
                 RaisePropertyChanged(nameof(Msg));
                 timer.Start();
-            }, (p) => { return true; });          
+            }, (p) => { return true; });
             timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += Timer_Tick;
-            
+
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -57,7 +55,7 @@ namespace CodingDojo6.ViewModel
 
         private void GenerateDemoData()
         {
-           
+
             Items.Add(new ItemVM("MY Lego", new BitmapImage(new Uri("../Images/lego1.jpg", UriKind.Relative)), "-"));
             Items.Add(new ItemVM("MY Playmobil", new BitmapImage(new Uri("../Images/playmobil2.jpg", UriKind.Relative)), "-"));
 
@@ -81,7 +79,6 @@ namespace CodingDojo6.ViewModel
                 new ItemVM("Playmobil 2", new BitmapImage(new Uri("../Images/playmobil2.jpg", UriKind.Relative)), "5+"));
             Items[Items.Count - 1].AddItem(
                 new ItemVM("Playmobil 3", new BitmapImage(new Uri("../Images/playmobil3.jpg", UriKind.Relative)), "10+"));
-
 
             Items[0].AddItem(
                 new ItemVM("Lego 1", new BitmapImage(new Uri("../Images/lego1.jpg", UriKind.Relative)), "5+"));

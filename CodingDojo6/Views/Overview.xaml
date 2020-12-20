@@ -7,7 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Overview, Source={StaticResource Locator}}">
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -19,14 +18,14 @@
         </Grid.RowDefinitions>
         <ListBox Grid.Row="0" Grid.Column="0" SelectedItem="{Binding CurrentItem}" ItemsSource="{Binding Items}" Margin="0,50,0,0" Background="Transparent"  >
             <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <Border BorderBrush="Black"  BorderThickness="1" CornerRadius="5" Width="150" Margin="5">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Height="30" Margin="3" Source="{Binding Image}"></Image>
-                        <Label Content="{Binding Description}"></Label>
-                    </StackPanel>
-                </Border>
-            </DataTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black"  BorderThickness="1" CornerRadius="5" Width="150" Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Height="30" Margin="3" Source="{Binding Image}"></Image>
+                            <Label Content="{Binding Description}"></Label>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ListBox>
         <ItemsControl Grid.Row="0" Grid.Column="2" ItemsSource="{Binding CurrentItem.Items}">
@@ -49,7 +48,7 @@
                     </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-        </ItemsControl>       
+        </ItemsControl>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
             <Button Width="40" Height="40">
                 <Button.Template>
@@ -73,6 +72,5 @@
                 <Label Content="{Binding Msg}" VerticalAlignment="Center"></Label>
             </Border>
         </StackPanel>
-        
     </Grid>
 </UserControl>

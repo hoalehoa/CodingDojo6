@@ -14,10 +14,10 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
-            <DataTemplate>
-                <Image Source="{Binding Image}" Height="60"/>
-            </DataTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Image}" Height="60"/>
+                </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>    
+        </ListBox>
     </Grid>
 </UserControl>
