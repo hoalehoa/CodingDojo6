@@ -22,13 +22,14 @@ namespace CodingDojo6.ViewModel
 
         public MainViewModel()
         {
-
+            //set the mytoys vm on startup so it def. is constructed (needed for messenger)
+            CurrentVM = SimpleIoc.Default.GetInstance<MyToysVM>();
             OverviewBtn = new RelayCommand(() =>
             {
                 CurrentVM = SimpleIoc.Default.GetInstance<OverviewVM>(); 
                 RaisePropertyChanged();
             });
-            MyToysBtn = new RelayCommand(() => { CurrentVM = SimpleIoc.Default.GetInstance<MyToysVM>(); });
+            MyToysBtn = new RelayCommand(() => { CurrentVM = SimpleIoc.Default.GetInstance<MyToysVM>(); RaisePropertyChanged(); });
 
         }
 
