@@ -13,6 +13,7 @@ namespace CodingDojo6.ViewModel
     {
         private ItemVM currentItem;
         public string Msg { get; set; }
+       // private Messenger messenger = SimpleIoc.Default.GetInstance<Messenger>();
 
         public ItemVM CurrentItem
         {
@@ -20,30 +21,28 @@ namespace CodingDojo6.ViewModel
             set { currentItem = value; RaisePropertyChanged(); }
         }
 
-        public ObservableCollection<ItemVM> Items { 
-            get; 
-            set; }
+        public ObservableCollection<ItemVM> Items { get; set; }
         private RelayCommand<ItemVM> buyBtn;
         public RelayCommand<ItemVM> BuyBtn
         {
             get { return buyBtn; }
-            set { buyBtn = value; RaisePropertyChanged(nameof(BuyBtn)); }
+            set { buyBtn = value; RaisePropertyChanged(); }
         }
-        public event EventHandler<ItemVM> ItemAdded;
+        //public event EventHandler<ItemVM> ItemAdded;
         private DispatcherTimer timer;
 
         public OverviewVM()
         {
             Items = new ObservableCollection<ItemVM>();
             GenerateDemoData();
+            timer = new DispatcherTimer();
             BuyBtn = new RelayCommand<ItemVM>((p) => {
-                ItemAdded?.Invoke(this, p);
-                Msg = "Item added";
+                MessengerInstance.Send(p);
+                //ItemAdded?.Invoke(this, p);
+                Msg = "New Entry Added";
                 RaisePropertyChanged(nameof(Msg));
                 timer.Start();
-            }, (p) => { return true; });
-            timer = new DispatcherTimer();
-            
+            }, (p) => { return true; });          
             timer.Interval = TimeSpan.FromSeconds(2);
             timer.Tick += Timer_Tick;
             
@@ -58,48 +57,36 @@ namespace CodingDojo6.ViewModel
 
         private void GenerateDemoData()
         {
-            //try
-            //{
-            //    var lbi1 = new BitmapImage(new Uri("Images/lego1.jpg", UriKind.Relative));
-            //    var lbi2 = new BitmapImage(new Uri("Images/lego2.jpg", UriKind.Relative));
-            //    var pbi2 = new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative));
-            //    var pbi3 = new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative));
-                
-            //}
-            //catch (Exception e)
-            //{
-
-            //    throw;
-            //}
-            Items.Add(new ItemVM("MY Lego", new BitmapImage(new Uri("Images/lego1.jpg", UriKind.Relative)), "-"));
-            Items.Add(new ItemVM("MY Playmobil", new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative)), "-"));
+           
+            Items.Add(new ItemVM("MY Lego", new BitmapImage(new Uri("../Images/lego1.jpg", UriKind.Relative)), "-"));
+            Items.Add(new ItemVM("MY Playmobil", new BitmapImage(new Uri("../Images/playmobil2.jpg", UriKind.Relative)), "-"));
 
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 2", new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative)), "5+"));
+                new ItemVM("Playmobil 2", new BitmapImage(new Uri("../Images/playmobil2.jpg", UriKind.Relative)), "5+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 3", new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative)), "10+"));
+                new ItemVM("Playmobil 3", new BitmapImage(new Uri("../Images/playmobil3.jpg", UriKind.Relative)), "10+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 2", new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative)), "5+"));
+                new ItemVM("Playmobil 2", new BitmapImage(new Uri("../Images/playmobil2.jpg", UriKind.Relative)), "5+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 3", new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative)), "10+"));
+                new ItemVM("Playmobil 3", new BitmapImage(new Uri("../Images/playmobil3.jpg", UriKind.Relative)), "10+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 2", new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative)), "5+"));
+                new ItemVM("Playmobil 2", new BitmapImage(new Uri("../Images/playmobil2.jpg", UriKind.Relative)), "5+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 3", new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative)), "10+"));
+                new ItemVM("Playmobil 3", new BitmapImage(new Uri("../Images/playmobil3.jpg", UriKind.Relative)), "10+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 2", new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative)), "5+"));
+                new ItemVM("Playmobil 2", new BitmapImage(new Uri("../Images/playmobil2.jpg", UriKind.Relative)), "5+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 3", new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative)), "10+"));
+                new ItemVM("Playmobil 3", new BitmapImage(new Uri("../Images/playmobil3.jpg", UriKind.Relative)), "10+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 2", new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative)), "5+"));
+                new ItemVM("Playmobil 2", new BitmapImage(new Uri("../Images/playmobil2.jpg", UriKind.Relative)), "5+"));
             Items[Items.Count - 1].AddItem(
-                new ItemVM("Playmobil 3", new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative)), "10+"));
+                new ItemVM("Playmobil 3", new BitmapImage(new Uri("../Images/playmobil3.jpg", UriKind.Relative)), "10+"));
 
 
             Items[0].AddItem(
-                new ItemVM("Lego 1", new BitmapImage(new Uri("Images/lego1.jpg", UriKind.Relative)), "5+"));
+                new ItemVM("Lego 1", new BitmapImage(new Uri("../Images/lego1.jpg", UriKind.Relative)), "5+"));
             Items[0].AddItem(
-                new ItemVM("Lego 2", new BitmapImage(new Uri("Images/lego2.jpg", UriKind.Relative)), "10+"));
+                new ItemVM("Lego 2", new BitmapImage(new Uri("../Images/lego2.jpg", UriKind.Relative)), "10+"));
             RaisePropertyChanged();
         }
     }

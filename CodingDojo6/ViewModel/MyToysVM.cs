@@ -9,14 +9,15 @@ namespace CodingDojo6.ViewModel
     public class MyToysVM: ViewModelBase
     {
         public ObservableCollection<ItemVM> Cart { get; set; }
-       
-        
+
+
         public MyToysVM()
         {
-           
+            MessengerInstance.Register<ItemVM>(this, ChosenItem_ItemAdded);
         }
 
-        public void ChosenItem_ItemAdded(object sender, ItemVM e)
+       
+        public void ChosenItem_ItemAdded(ItemVM e)
         {
             if(Cart == null)
             {

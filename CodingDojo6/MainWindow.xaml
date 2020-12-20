@@ -9,7 +9,7 @@
         xmlns:vm="clr-namespace:CodingDojo6.ViewModel"
         xmlns:views="clr-namespace:CodingDojo6.Views"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
-    <Grid>
+    <Grid Background="LightGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -23,6 +23,7 @@
             <Button Content="Overview" Margin="10" Command="{Binding OverviewBtn}"></Button>
             <Button Content="MyToys" Margin="10" Command="{Binding MyToysBtn}"></Button>
         </StackPanel>
+        <Border Grid.Column="1" Grid.Row="1" CornerRadius="50,0,0,0" BorderBrush="Black" BorderThickness="1,1,0,1" Background="LightGray">
         <ContentControl Grid.Column="1" Grid.Row="1" Content="{Binding CurrentVM }">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type vm:OverviewVM}">
@@ -33,6 +34,6 @@
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
-        
+        </Border>
     </Grid>
 </Window>

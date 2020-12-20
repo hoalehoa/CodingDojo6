@@ -12,7 +12,7 @@ namespace CodingDojo6.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<OverviewVM>();
             SimpleIoc.Default.Register<MyToysVM>();
-            Overview.ItemAdded += MyToys.ChosenItem_ItemAdded;
+            //Overview.ItemAdded += MyToys.ChosenItem_ItemAdded;
         }
         public MainViewModel Main => SimpleIoc.Default.GetInstance<MainViewModel>();
         public OverviewVM Overview => SimpleIoc.Default.GetInstance<OverviewVM>();
